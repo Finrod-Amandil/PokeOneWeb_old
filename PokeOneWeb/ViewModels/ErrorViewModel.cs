@@ -1,6 +1,4 @@
-using System;
-
-namespace PokeOneWeb.Models
+namespace PokeOneWeb.ViewModels
 {
     public class ErrorViewModel
     {
