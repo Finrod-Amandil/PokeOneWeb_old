@@ -11,7 +11,7 @@ namespace PokeOneWeb.Data.Entities
         public List<FruitTree> FruitTrees { get; set; }
         public List<ItemGift> ItemGifts { get; set; }
         public List<BossPokemonDropItem> DroppedByBossPokemon { get; set; }
-        public List<BossTrainerDropItem> DroppedByBossTrainers { get; set; }
+        public List<TrainerDropItem> DroppedByBossTrainers { get; set; }
         public List<PokemonSpeciesDropItem> DroppedByPokemonSpecies { get; set; }
     }
 }

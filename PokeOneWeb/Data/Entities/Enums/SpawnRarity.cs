@@ -2,6 +2,7 @@
 {
     public enum SpawnRarity
     {
+        Unknown,
         Common,
         Uncommon,
         Rare,

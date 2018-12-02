@@ -9,6 +9,7 @@ namespace PokeOneWeb.Data.Entities
     {
         public int Id { get; set; }
         public SpawnRarity SpawnRarity { get; set; }
+        public bool Verified { get; set; }
 
         [ForeignKey("PokemonSpeciesId")]
         public PokemonSpecies PokemonSpecies { get; set; }

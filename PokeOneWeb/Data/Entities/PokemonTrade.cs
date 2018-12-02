@@ -8,6 +8,7 @@ namespace PokeOneWeb.Data.Entities
         public int Id { get; set; }
         public PokemonTradeType PokemonTradeType { get; set; }
         public int PriceInCoins { get; set; }
+        public int PriceInPokedollar { get; set; }
         
         [ForeignKey("HumanNpcId")]
         public HumanNpc HumanNpc { get; set; }

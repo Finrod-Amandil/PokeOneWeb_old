@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PokeOneWeb.Data.Entities
 {
-    public class BossTrainerDropItem
+    public class TrainerDropItem
     {
         public int Id { get; set; }
 
-        [ForeignKey("BossTrainerId")]
-        public BossTrainer BossTrainer { get; set; }
-        public int BossTrainerId { get; set; }
+        [ForeignKey("TrainerId")]
+        public Trainer Trainer { get; set; }
+        public int TrainerId { get; set; }
 
         [ForeignKey("ItemId")]
         public Item Item { get; set; }

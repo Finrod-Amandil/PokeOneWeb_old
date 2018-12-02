@@ -12,6 +12,7 @@ namespace PokeOneWeb.Data.Entities
         public int ExperienceReward { get; set; }
         [Column("Trainer_MoneyReward")]
         public int MoneyReward { get; set; }
+        public List<TrainerDropItem> Drops { get; set; }
 
         public List<TrainerPokemon> TrainerPokemon { get; set; }
     }
