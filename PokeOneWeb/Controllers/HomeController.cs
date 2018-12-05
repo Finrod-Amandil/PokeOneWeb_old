@@ -30,6 +30,11 @@ namespace PokeOneWeb.Controllers
             return View();
         }
 
+        public IActionResult Temp()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
