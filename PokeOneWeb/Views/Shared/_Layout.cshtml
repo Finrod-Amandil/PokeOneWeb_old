@@ -1,9 +1,74 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
     <link href="~/css/styles-layout.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="header-container-buffer">
+    </div>
+
+    <div class="header-container-center">
+        <div class="nav-container">
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    Regions
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    Pokédex
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    Items
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    Quests
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    FAQ
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    Guides
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    Bazaar
+                </p>
+            </div>
+            <div class="nav-item">
+                <p class="nav-item-text">
+                    About
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-text-logo">
+        <div class="logo">
+            <img id="logo" src="~/images/pokeone logo.png" />
+        </div>
+    </div>
+
     @RenderBody()
 </body>
 </html>
