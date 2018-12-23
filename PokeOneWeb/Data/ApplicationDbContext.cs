@@ -31,7 +31,7 @@ namespace PokeOneWeb.Data
             base.OnModelCreating(modelBuilder);
 
             //Setting foreign key constraints between regular entities and entities in the
-            //LocationInteraction hierarchy to ON DELETE SET NULL to avoid Errors when
+            //LocationInteraction hierarchy to ON DELETE NO ACTION to avoid Errors when
             //generating the model.
             modelBuilder.Entity<PlacedItem>()
                 .HasOne(p => p.Item)
