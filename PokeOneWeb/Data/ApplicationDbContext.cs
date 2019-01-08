@@ -33,7 +33,7 @@ namespace PokeOneWeb.Data
             //Setting foreign key constraints between regular entities and entities in the
             //LocationInteraction hierarchy to ON DELETE NO ACTION to avoid Errors when
             //generating the model.
-            modelBuilder.Entity<PlacedItem>()
+            /*modelBuilder.Entity<PlacedItem>()
                 .HasOne(p => p.Item)
                 .WithMany(i => i.PlacedItems)
                 .HasForeignKey(p => p.PlacedItemId)
@@ -67,7 +67,7 @@ namespace PokeOneWeb.Data
                 .HasOne(t => t.TaughtMove)
                 .WithMany()
                 .HasForeignKey(t => t.TutorTaughtMoveId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);*/
 
             modelBuilder.Entity<LocationInteraction>()
                 .HasOne(i => i.Location)

@@ -4,10 +4,10 @@ namespace PokeOneWeb.Data.Entities
 {
     public class PlacedItem : LocationInteraction
     {
-        [ForeignKey("PlacedItemId")]
+        [ForeignKey("ItemId")]
         public Item Item { get; set; }
         [Column("PlacedItem_ItemId")]
-        public int? PlacedItemId { get; set; }
+        public int? ItemId { get; set; }
 
         [Column("PlacedItem_IsHidden")]
         public bool IsHidden { get; set; }
