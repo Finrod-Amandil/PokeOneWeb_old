@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using PokeOneWeb.Data.Entities.Enums;
 
 namespace PokeOneWeb.Data.Entities
 {
@@ -12,7 +11,7 @@ namespace PokeOneWeb.Data.Entities
         public int ExperienceReward { get; set; }
         [Column("Trainer_MoneyReward")]
         public int MoneyReward { get; set; }
-        public List<TrainerDropItem> Drops { get; set; }
+        public List<TrainerDropItem> TrainerDropItems { get; set; }
 
         public List<TrainerPokemon> TrainerPokemon { get; set; }
     }

@@ -4,9 +4,14 @@ namespace PokeOneWeb.Data.Entities
 {
     public class PokemonNpc : Npc
     {
-        [ForeignKey("PokemonNpcSpeciesId")]
-        public PokemonSpecies PokemonSpecies { get; set; }
-        [Column("PokemonNpc_PokemonSpeciesId")]
-        public int PokemonNpcSpeciesId { get; set; }
+        [ForeignKey("PokemonId")]
+        public Pokemon Pokemon { get; set; }
+        [Column("PokemonNpc_PokemonId")]
+        public int PokemonId { get; set; }
+
+        [ForeignKey("PokemonNpcTypeId")]
+        public PokemonNpcType PokemonNpcType { get; set; }
+        [Column("PokemonNpc_PokemonNpcTypeId")]
+        public int PokemonNpcTypeId { get; set; }
     }
 }
