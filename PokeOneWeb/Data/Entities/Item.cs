@@ -19,5 +19,6 @@ namespace PokeOneWeb.Data.Entities
         public List<PokemonDropItem> DroppedByPokemon { get; set; }
         public List<TrainerDropItem> DroppedByBossTrainers { get; set; }
         public List<PokemonSpeciesVarietyDropItem> DroppedByPokemonSpeciesVarieties { get; set; }
+        public List<GloballyObtainableItems> GloballyObtainableItems { get; set; }
     }
 }
