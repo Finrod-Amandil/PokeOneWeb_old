@@ -14,6 +14,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 
     <link href="~/css/styles-layout.css" rel="stylesheet" />
 </head>
@@ -44,6 +45,11 @@
                 <p class="arrow-down">
                     >
                 </p>
+                <span class="dropdown-content">
+                    <ol class="dropdown-list">
+                        <li>Details</li>
+                    </ol>
+                </span>
             </div>
             <div class="nav-item">
                 <img class="nav-picture" src="~/images/pokedex.png" />
@@ -65,6 +71,14 @@
                 <p class="arrow-down">
                     >
                 </p>
+                <span class="dropdown-content">
+                    <ol class="dropdown-list">
+                        <li>Main Quests</li>
+                        <li>Side Quests</li>
+                        <li>Bounties</li>
+                        <li>Daily Quests</li>
+                    </ol>
+                </span>
             </div>
             <div class="nav-item">
                 <img class="nav-picture" src="~/images/icognito.png" />
@@ -80,6 +94,14 @@
                 <p class="arrow-down">
                     >
                 </p>
+                <span class="dropdown-content">
+                    <ol class="dropdown-list">
+                        <li>Trainer</li>
+                        <li>Headbutt</li>
+                        <li>Rock Smash</li>
+                        <li>EV-Training</li>
+                    </ol>
+                </span>
             </div>
             <div class="nav-item">
                 <img class="nav-picture" src="~/images/amulet-coin.png" />
@@ -89,6 +111,12 @@
                 <p class="arrow-down">
                     >
                 </p>
+                <span class="dropdown-content">
+                    <ol class="dropdown-list">
+                        <li>Buying</li>
+                        <li>Selling</li>
+                    </ol>
+                </span>
             </div>
             <div class="nav-item">
                 <img class="nav-picture" src="~/images/card-key.png" />
@@ -143,6 +171,18 @@
         </div>
     </div>
 
+    <script type="text/javascript">
+        //Dropdown menu opens when hovered over.
+        $('.nav-item').hover(
+            function () { //when mouse is over element
+                $(this).find('.dropdown-content').stop(true, true).delay(200).fadeIn(500);
+            },
+            function () { //when mouse is no longer over element
+                $(this).find('.dropdown-content').stop(true, true).delay(200).fadeOut(500);
+            });
+    </script>
+
     @RenderBody()
+
 </body>
 </html>
