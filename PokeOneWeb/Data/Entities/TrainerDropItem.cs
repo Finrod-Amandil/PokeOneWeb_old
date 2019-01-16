@@ -6,6 +6,7 @@ namespace PokeOneWeb.Data.Entities
     public class TrainerDropItem
     {
         public int Id { get; set; }
+        public bool IsGuaranteed { get; set; }
 
         [ForeignKey("TrainerId")]
         public Trainer Trainer { get; set; }

@@ -13,11 +13,7 @@ namespace PokeOneWeb.Data.Entities
         public ElementalTypeCombination ElementalTypeCombination { get; set; }
         public int ElementalTypeCombinationId { get; set; }
 
-        [ForeignKey("EvYieldId")]
-        public EvYield EvYield { get; set; }
-        public int EvYieldId { get; set; }
 
-        public List<PokemonSpeciesDropItem> Drops { get; set; }
         public List<PokemonGift> PokemonGifts { get; set; }
         public List<PokemonSpawn> PokemonSpawns { get; set; }
         public List<PokemonTrade> PokemonTrades { get; set; }

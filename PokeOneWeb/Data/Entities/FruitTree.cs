@@ -4,9 +4,13 @@ namespace PokeOneWeb.Data.Entities
 {
     public class FruitTree : LocationInteraction
     {
-        [ForeignKey("FruitId")]
-        public Item Fruit { get; set; }
-        [Column("FruitTree_FruitId")]
-        public int FruitId { get; set; }
+        [ForeignKey("FruitItemId")]
+        public Item FruitItem { get; set; }
+        [Column("FruitTree_FruitItemId")]
+        public int FruitItemId { get; set; }
+
+        [ForeignKey("FruitTreeTypeId")]
+        public FruitTreeType FruitTreeType { get; set; }
+        public int FruitTreeTypeId { get; set; }
     }
 }

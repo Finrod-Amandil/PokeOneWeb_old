@@ -7,13 +7,12 @@ namespace PokeOneWeb.Data.Entities
     {
         public int Id { get; set; }
         public string PlacementDescription { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public string Notes { get; set; }
 
         [ForeignKey("LocationId")]
         public Location Location { get; set; }
         public int LocationId { get; set; }
-
-        [ForeignKey("CoordinatesId")]
-        public Coordinates Coordinates { get; set; }
-        public int CoordinatesId { get; set; }
     }
 }

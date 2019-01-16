@@ -1,9 +1,148 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto" />
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
     <link href="~/css/styles-layout.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="border-black border-header-container-buffer-layer3">
+    </div>
+    <div class="border-gray border-header-container-buffer-layer2">
+    </div>
+    <div class="border-black border-header-container-buffer-layer1">
+    </div>
+    <div class="header-container-buffer">
+    </div>
+
+    <div class="border-black border-header-container-center-layer3">
+    </div>
+    <div class="border-gray border-header-container-center-layer2">
+    </div>
+    <div class="border-black border-header-container-center-layer1">
+    </div>
+
+    <div class="header-container-center">
+        <div class="nav-container">
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/map.png" />
+                <p class="nav-item-text">
+                    Regions
+                </p>
+                <p class="arrow-down">
+                    >
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/pokedex.png" />
+                <p class="nav-item-text">
+                    Pokédex
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/potion.png" />
+                <p class="nav-item-text">
+                    Items
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/badge.png" />
+                <p class="nav-item-text">
+                    Quests
+                </p>
+                <p class="arrow-down">
+                    >
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/icognito.png" />
+                <p class="nav-item-text">
+                    FAQ
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/adventure-rules.png" />
+                <p class="nav-item-text">
+                    Guides
+                </p>
+                <p class="arrow-down">
+                    >
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/amulet-coin.png" />
+                <p class="nav-item-text">
+                    Bazaar
+                </p>
+                <p class="arrow-down">
+                    >
+                </p>
+            </div>
+            <div class="nav-item">
+                <img class="nav-picture" src="~/images/card-key.png" />
+                <p class="nav-item-text">
+                    About
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-text-logo">
+        <div class="title-left">
+            <p class="title-text">
+                Unofficial
+            </p>
+        </div>
+        <div class="logo">
+            <img id="logo" src="~/images/pokeone logo.png" />
+        </div>
+        <div class="title-right">
+            <p class="title-text">
+                Guide
+            </p>
+        </div>
+    </div>
+
+    <div class="border-black border-content-container-header-layer3">
+    </div>
+    <div class="border-gray border-content-container-header-layer2">
+    </div>
+    <div class="border-black border-content-container-header-layer1">
+    </div>
+    <div class="content-container-header">
+        <div class="content-container-overlay">
+            <p class="content-title">
+                This is a title
+            </p>
+        </div>
+    </div>
+
+    <div class="border-black border-content-container-layer3">
+    </div>
+    <div class="border-gray border-content-container-layer2">
+    </div>
+    <div class="border-black border-content-container-layer1">
+    </div>
+    <div class="content-container-main">
+        <div class="text-container">
+            <p class="content-text">
+                This is a sample text.
+            </p>
+        </div>
+    </div>
+
     @RenderBody()
 </body>
 </html>

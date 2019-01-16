@@ -1,6 +1,6 @@
 ﻿namespace PokeOneWeb.Data.Entities
 {
-    public class Npc : LocationInteraction
+    public abstract class Npc : LocationInteraction
     {
         
     }
