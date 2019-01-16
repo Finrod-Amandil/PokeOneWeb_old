@@ -1,7 +1,6 @@
 ﻿using System;
-namespace PokeOneWeb.Data.Entities
 using System.ComponentModel.DataAnnotations.Schema;
-
+namespace PokeOneWeb.Data.Entities
 {
     public class ElementalTypeDamageRelation
     {
