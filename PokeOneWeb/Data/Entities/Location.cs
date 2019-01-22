@@ -68,11 +68,11 @@ namespace PokeOneWeb.Data.Entities
         /// <summary>
         /// All <see cref="LocationInteraction"/>s found within this Location.
         /// </summary>
-        public List<LocationInteraction> LocationInteractions { get; set; }
+        public ICollection<LocationInteraction> LocationInteractions { get; set; }
 
         /// <summary>
         /// All <see cref="Quest"/>s linked to this Location.
         /// </summary>
-        public List<Quest> Quests { get; set; }
+        public ICollection<Quest> Quests { get; set; }
     }
 }

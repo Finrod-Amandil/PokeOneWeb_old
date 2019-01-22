@@ -20,7 +20,7 @@ namespace PokeOneWeb.Data.Entities
         /// <summary>
         /// All <see cref="Location"/>s this Region consists of.
         /// </summary>
-        public List<Location> Locations { get; set; }
+        public ICollection<Location> Locations { get; set; }
 
         /// <summary>
         /// Whether this is a 'regular' Region which is always accessible or
