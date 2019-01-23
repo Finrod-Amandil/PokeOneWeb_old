@@ -13,7 +13,7 @@ namespace PokeOneWeb.Data.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// The display name for the lLcation
+        /// The display name for the Location
         /// </summary>
         public string Name { get; set; }
 
