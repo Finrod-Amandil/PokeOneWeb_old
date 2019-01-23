@@ -19,6 +19,7 @@
     <link href="~/css/styles-layout.css" rel="stylesheet" />
 </head>
 <body>
+    <!-- header section: borders-->
     <div class="border-black border-header-container-buffer-layer3">
     </div>
     <div class="border-gray border-header-container-buffer-layer2">
@@ -27,14 +28,13 @@
     </div>
     <div class="header-container-buffer">
     </div>
-
     <div class="border-black border-header-container-center-layer3">
     </div>
     <div class="border-gray border-header-container-center-layer2">
     </div>
     <div class="border-black border-header-container-center-layer1">
     </div>
-
+    <!-- header section: big center container-->
     <div class="header-container-center">
         <div class="nav-container">
             <div class="nav-item">
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-
+    <!-- header section: wide container with title and logo-->
     <div class="header-text-logo">
         <div class="title-left">
             <p class="title-text">
@@ -142,13 +142,14 @@
             </p>
         </div>
     </div>
-
+    <!-- content section: borders of content title -->
     <div class="border-black border-content-container-header-layer3">
     </div>
     <div class="border-gray border-content-container-header-layer2">
     </div>
     <div class="border-black border-content-container-header-layer1">
     </div>
+    <!-- border section: title (top container with rounded corners)-->
     <div class="content-container-header">
         <div class="content-container-overlay">
             <p class="content-title">
@@ -156,13 +157,14 @@
             </p>
         </div>
     </div>
-
+    <!-- content section: borders of main container-->
     <div class="border-black border-content-container-layer3">
     </div>
     <div class="border-gray border-content-container-layer2">
     </div>
     <div class="border-black border-content-container-layer1">
     </div>
+    <!-- content section: main container -->
     <div class="content-container-main">
         <div class="text-container">
             <p class="content-text">
@@ -170,7 +172,7 @@
             </p>
         </div>
     </div>
-
+    <!-- JavaScript for sropdown menu -->
     <script type="text/javascript">
         //Dropdown menu opens when hovered over.
         $('.nav-item').hover(
@@ -181,7 +183,6 @@
                 $(this).find('.dropdown-content').stop(true, true).delay(200).fadeOut(500);
             });
     </script>
-
     @RenderBody()
 
 </body>
