@@ -1,15 +1,18 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
-    /// The Event entity models temporary ingame events such as Christmas Events.
+    /// The Event entity models temporary in-game events such as Christmas Events.
     /// Each Event may be linked to an event-specific region which encompasses all locations
     /// which are solely accessible during the event.
     /// </summary>
+    [Table("Event")]
     public class Event
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

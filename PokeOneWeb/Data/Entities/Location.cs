@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -8,8 +9,10 @@ namespace PokeOneWeb.Data.Entities
     /// A Location is the smallest spatial entity in PokéOne. One Location can be as small as
     /// a single room in a building, but can go up to being an entire Route.
     /// </summary>
+    [Table("Location")]
     public class Location
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -19,13 +22,13 @@ namespace PokeOneWeb.Data.Entities
 
         /// <summary>
         /// Whether the Location is currently accessible (in any way). Player-specific
-        /// restrictions such as insufficient progress in the story are not modelled by this field.
+        /// restrictions such as insufficient progress in the story are not modeled by this field.
         /// Defaults to true.
         /// </summary>
         public bool IsAccessible { get; set; } = true;
 
         /// <summary>
-        /// Whether first entering this Location adds one point to the ingame achievement linked to
+        /// Whether first entering this Location adds one point to the in-game achievement linked to
         /// discovering as many locations as possible.
         /// </summary>
         public bool IsDiscoverable { get; set; }
@@ -74,5 +77,12 @@ namespace PokeOneWeb.Data.Entities
         /// All <see cref="Quest"/>s linked to this Location.
         /// </summary>
         public ICollection<Quest> Quests { get; set; }
+
+        /// <summary>
+        /// The name of the area which is used within PokéOne. This is required in combination with the
+        /// coordinates of a <see cref="LocationInteraction"/> as coordinates are defined per PokéOne Area.
+        /// Area names can be determined by using the /where command in PokéOne. Example: "kanto_e_pallet_viridian_01_02_21_22"
+        /// </summary>
+        public string InGameAreaName { get; set; }
     }
 }

@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
     /// Classifies <see cref="Trainer"/>s.
     /// </summary>
+    [Table("TrainerType")]
     public class TrainerType
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

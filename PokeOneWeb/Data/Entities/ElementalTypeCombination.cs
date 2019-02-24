@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
     /// As a <see cref="PokemonSpeciesVariety"/> can have two types, each PokemonSpeciesVariety has
-    /// an ElementalTypeCombination which contains these types. PokémonSpeciesVarieties with only one type
+    /// an ElementalTypeCombination which contains these types. PokemonSpeciesVarieties with only one type
     /// still resolve that using an ElementalTypeCombination, with the second type being set to NULL.
-    /// The two types are labelled "primary" and "secondary" type by convention, but there is no difference
+    /// The two types are labeled "primary" and "secondary" type by convention, but there is no difference
     /// between the two except the order of mentioning them. Single-type Pokémon only have a primary type.
     /// </summary>
+    [Table("ElementalTypeCombination")]
     public class ElementalTypeCombination
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -40,6 +43,6 @@ namespace PokeOneWeb.Data.Entities
         /// <summary>
         /// Which PokemonSpeciesVarieties have this type combination.
         /// </summary>
-        public ICollection<PokemonSpecies> PokemonSpecies { get; set; }
+        public ICollection<PokemonSpeciesVariety> PokemonSpeciesVarieties { get; set; }
     }
 }

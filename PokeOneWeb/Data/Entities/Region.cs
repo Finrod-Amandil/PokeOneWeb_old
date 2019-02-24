@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
-    /// The Region entity models an ingame region. Regions are the largest spatial entity of PokéOne
+    /// The Region entity models an in-game region. Regions are the largest spatial entity of PokéOne
     /// and consist of many <see cref="Location"/>s. All Locations which are bound to a specific <see cref="Entities.Event"/>
     /// are collected within an Event Region.
     /// </summary>
+    [Table("Region")]
     public class Region
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -30,13 +33,8 @@ namespace PokeOneWeb.Data.Entities
 
         /// <summary>
         /// The <see cref="Entities.Event"/> this Region belongs to. Only set if Region is an Event Region.
+        /// One-to-one relationship
         /// </summary>
-        [ForeignKey("EventId")]
         public Event Event { get; set; }
-
-        /// <summary>
-        /// Foreign key for the <see cref="Entities.Event"/>. Null if the Region is not an Event Region.
-        /// </summary>
-        public int? EventId { get; set; }
     }
 }

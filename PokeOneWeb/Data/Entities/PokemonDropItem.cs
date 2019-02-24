@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace PokeOneWeb.Data.Entities
 
 {
@@ -6,8 +7,10 @@ namespace PokeOneWeb.Data.Entities
     /// Transformation entity between <see cref="Entities.Pokemon"/> and <see cref="Entities.Item"/>.
     /// Models, which Items are dropped by Pokémon resp. obtained upon defeating a Pokémon.
     /// </summary>
+    [Table("PokemonDropItem")]
     public class PokemonDropItem
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

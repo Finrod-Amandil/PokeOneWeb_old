@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
-    /// Items are inanimate objects with can be used ingame for various purposes.
+    /// Items are inanimate objects with can be used in-game for various purposes.
     /// </summary>
+    [Table("Item")]
     public class Item
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -21,7 +24,7 @@ namespace PokeOneWeb.Data.Entities
         public string Description { get; set; }
 
         /// <summary>
-        /// In which <see cref="Entities.BagCategory"/> the Item is sorted ingame.
+        /// In which <see cref="Entities.BagCategory"/> the Item is sorted in-game.
         /// </summary>
         [ForeignKey("BagCategoryId")]
         public BagCategory BagCategory { get; set; }
@@ -54,12 +57,17 @@ namespace PokeOneWeb.Data.Entities
         /// <summary>
         /// By which <see cref="Trainer"/>s this Item is dropped.
         /// </summary>
-        public ICollection<TrainerDropItem> DroppedByBossTrainers { get; set; }
+        public ICollection<TrainerDropItem> DroppedByTrainers { get; set; }
 
         /// <summary>
         /// By which <see cref="PokemonSpeciesVariety"/> this Item is dropped.
         /// </summary>
         public ICollection<PokemonSpeciesVarietyDropItem> DroppedByPokemonSpeciesVarieties { get; set; }
+
+        /// <summary>
+        /// By which <see cref="Quest"/>s this Item is rewarded.
+        /// </summary>
+        public ICollection<QuestItemReward> QuestRewards { get; set; }
 
         /// <summary>
         /// Through which <see cref="GloballyObtainableItem"/>s this item can be obtained.

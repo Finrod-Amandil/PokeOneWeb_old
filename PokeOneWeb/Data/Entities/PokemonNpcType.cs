@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
     /// Classifies <see cref="PokemonNpc"/>s.
     /// </summary>
+    [Table("PokemonNpcType")]
     public class PokemonNpcType
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -15,7 +19,7 @@ namespace PokeOneWeb.Data.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Which PokemonNpcs are of this type.
+        /// Which <see cref="PokemonNpc"/>s are of this type.
         /// </summary>
         public ICollection<PokemonNpc> PokemonNpcs { get; set; }
     }

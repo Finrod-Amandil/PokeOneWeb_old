@@ -1,12 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
     /// Transformation entity between <see cref="Entities.Item"/> and <see cref="Entities.Quest"/>.
     /// </summary>
+    [Table("QuestItemReward")]
     public class QuestItemReward
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

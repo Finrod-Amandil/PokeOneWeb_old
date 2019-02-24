@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PokeOneWeb.Data.Entities
@@ -7,8 +8,10 @@ namespace PokeOneWeb.Data.Entities
     /// Transformation entity between <see cref="Entities.Item"/> and <see cref="Entities.Trainer"/>.
     /// Models, which Items are being dropped by Trainers, resp. obtained upon defeating a Trainer.
     /// </summary>
+    [Table("TrainerDropItem")]
     public class TrainerDropItem
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
+    /// <inheritdoc />
     /// <summary>
     /// Human NPCs differ from Pokemon NPCs through having a NPC-specific name.
     /// </summary>
@@ -12,5 +14,10 @@ namespace PokeOneWeb.Data.Entities
         /// </summary>
         [Column("HumanNpc_Name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Which <see cref="PokemonTrade"/>s this NPC offers.
+        /// </summary>
+        public ICollection<PokemonTrade> PokemonTrades { get; set; }
     }
 }

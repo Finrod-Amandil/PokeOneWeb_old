@@ -1,26 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
     /// Transformation table for an <see cref="Entities.Item"/> being given as a gift by a
-    /// <see cref="Entities.HumanNpc"/>
+    /// <see cref="Entities.Npc"/>
     /// </summary>
+    [Table("ItemGift")]
     public class ItemGift
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
-        /// The <see cref="Entities.HumanNpc"/> giving the gift.
+        /// The <see cref="Entities.Npc"/> giving the gift.
         /// </summary>
-        [ForeignKey("HumanNpcId")]
-        public HumanNpc HumanNpc { get; set; }
+        [ForeignKey("NpcId")]
+        public Npc Npc { get; set; }
 
         /// <summary>
-        /// Foreign key for the <see cref="Entities.HumanNpc"/>.
+        /// Foreign key for the <see cref="Entities.Npc"/>.
         /// </summary>
-        public int HumanNpcId { get; set; }
+        public int NpcId { get; set; }
 
         /// <summary>
         /// The gifted <see cref="Entities.Item"/>.

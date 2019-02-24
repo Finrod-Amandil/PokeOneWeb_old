@@ -3,7 +3,7 @@
     public enum MoveLearnMethod
     {
         LevelUp,
-        Tm_Hm,
+        TmHm,
         Breeding,
         MoveTutor,
     }

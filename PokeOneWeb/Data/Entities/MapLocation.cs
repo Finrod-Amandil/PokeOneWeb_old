@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
@@ -6,8 +7,10 @@ namespace PokeOneWeb.Data.Entities
     /// Describes the map of a single location, which is part of a <see cref="Entities.Map"/>
     /// entity which may encompass multiple Locations' maps.
     /// </summary>
+    [Table("MapLocation")]
     public class MapLocation
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -36,6 +39,6 @@ namespace PokeOneWeb.Data.Entities
         /// The relative placement of this location's map on the encompassing <see cref="Entities.Map"/> entity.
         /// </summary>
         //TODO: Data type TBD
-        public object Placement { get; set; }
+        //public object Placement { get; set; }
     }
 }

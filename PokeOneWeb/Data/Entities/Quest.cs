@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PokeOneWeb.Data.Entities.Enums;
@@ -8,8 +9,10 @@ namespace PokeOneWeb.Data.Entities
     /// <summary>
     /// Quests are tasks that the player can complete to make progress in the game's story and/or gain experience.
     /// </summary>
+    [Table("Quest")]
     public class Quest
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

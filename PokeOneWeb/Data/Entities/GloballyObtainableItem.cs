@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
@@ -6,8 +7,10 @@ namespace PokeOneWeb.Data.Entities
     /// Globally Obtainable Items are Items which can be obtained at multiple places in the game world
     /// such as items bought from stores (except Department Stores), from Headbutting or Rock Smashing.
     /// </summary>
+    [Table("GloballyObtainableItem")]
     public class GloballyObtainableItem
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

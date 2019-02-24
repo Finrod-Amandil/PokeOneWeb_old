@@ -2,8 +2,9 @@
 
 namespace PokeOneWeb.Data.Entities
 {
+    /// <inheritdoc />
     /// <summary>
-    /// PokemonNpcs are interactable (no wild Pokémon spawns!) Pokémon, especially
+    /// PokemonNPCs are interact-able (no wild Pokémon spawns!) Pokémon, such as
     /// legendary Pokémon.
     /// </summary>
     public class PokemonNpc : Npc

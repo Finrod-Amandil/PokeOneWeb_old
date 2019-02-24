@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
@@ -6,8 +7,10 @@ namespace PokeOneWeb.Data.Entities
     /// Transformation entity between <see cref="Entities.MoveTutor"/> and
     /// <see cref="Entities.Move"/>. A move which can be taught by a Tutor.
     /// </summary>
+    [Table("MoveTutorMove")]
     public class MoveTutorMove
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

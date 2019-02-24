@@ -2,8 +2,9 @@
 
 namespace PokeOneWeb.Data.Entities
 {
+    /// <inheritdoc />
     /// <summary>
-    /// Fruit Trees are <see cref="LocationInteraction"/>s which yield one or multiple fruits
+    /// Fruit Trees are <see cref="T:PokeOneWeb.Data.Entities.LocationInteraction" />s which yield one or multiple fruits
     /// when being interacted with.
     /// </summary>
     public class FruitTree : LocationInteraction
@@ -30,7 +31,7 @@ namespace PokeOneWeb.Data.Entities
         /// <summary>
         /// Foreign key for the <see cref="FruitTreeType"/>
         /// </summary>
-        [Column("FruitTree_FruitTreeTypeId")]
+        [Column("FruitTree_TypeId")]
         public int FruitTreeTypeId { get; set; }
     }
 }

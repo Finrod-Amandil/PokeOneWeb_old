@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
@@ -7,8 +9,10 @@ namespace PokeOneWeb.Data.Entities
     /// Classifies <see cref="GloballyObtainableItem"/>s by obtain methods. Obtain methods
     /// include things like buying in a store, or obtaining items through headbutting.
     /// </summary>
+    [Table("ItemObtainMethod")]
     public class ItemObtainMethod
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

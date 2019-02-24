@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
+    /// <inheritdoc />
     /// <summary>
     /// Trainers are NPCs which battle the player upon interacting with them.
     /// </summary>

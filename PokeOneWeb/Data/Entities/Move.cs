@@ -1,13 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using PokeOneWeb.Data.Entities.Enums;
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
-    /// A move that can be learnt by <see cref="PokemonSpeciesVariety"/> and that can be used
+    /// A move that can be learned by <see cref="PokemonSpeciesVariety"/> and that can be used
     /// by a <see cref="Pokemon"/> during battle.
     /// </summary>
+    [Table("Move")]
     public class Move
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

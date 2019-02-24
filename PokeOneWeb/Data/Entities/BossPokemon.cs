@@ -2,9 +2,10 @@
 
 namespace PokeOneWeb.Data.Entities
 {
+    /// <inheritdoc />
     /// <summary>
     /// A Pokemon NPC which when battled does also yield Trainer XP and Money.
-    /// Item rewards are modelled using the <see cref="Pokemon"/> entity referenced
+    /// Item rewards are modeled using the <see cref="T:PokeOneWeb.Data.Entities.Pokemon" /> entity referenced
     /// by the superclass.
     /// </summary>
     public class BossPokemon : PokemonNpc

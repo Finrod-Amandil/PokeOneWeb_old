@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace PokeOneWeb.Data.Entities
@@ -6,8 +7,10 @@ namespace PokeOneWeb.Data.Entities
     /// <summary>
     /// A <see cref="Entities.Pokemon"/> which is used by a <see cref="Entities.Trainer"/>.
     /// </summary>
+    [Table("TrainerPokemon")]
     public class TrainerPokemon
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

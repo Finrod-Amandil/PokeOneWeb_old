@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
@@ -6,8 +7,10 @@ namespace PokeOneWeb.Data.Entities
     /// In order to get the effectivity of a defending <see cref="ElementalTypeCombination"/> multiply the ElementalTypeDamageRelations
     /// of each type of the combination.
     /// </summary>
+    [Table("ElementalTypeDamageRelation")]
     public class ElementalTypeDamageRelation
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

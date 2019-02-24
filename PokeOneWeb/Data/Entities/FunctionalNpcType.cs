@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
     /// Classifies Functional NPCs by type, i.e. Move Tutors, Move reminders etc.
     /// </summary>
+    [Table("FunctionalNpcType")]
     public class FunctionalNpcType
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -15,7 +19,7 @@ namespace PokeOneWeb.Data.Entities
         public string FunctionName { get; set; }
 
         /// <summary>
-        /// Which Npcs are of this type.
+        /// Which NPCs are of this type.
         /// </summary>
         public ICollection<FunctionalNpc> FunctionalNpcs { get; set; }
     }

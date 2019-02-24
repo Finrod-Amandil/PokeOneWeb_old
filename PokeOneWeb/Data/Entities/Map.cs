@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PokeOneWeb.Data.Entities
 {
     /// <summary>
-    /// A Map entity represents an ingame map, which is presented on a <see cref="Entities.LocationGroup"/>'s page. A Map
-    /// may display multiple ingame locations at once.
+    /// A Map entity represents an in-game map, which is presented on a <see cref="Entities.LocationGroup"/>'s page. A Map
+    /// may display multiple in-game locations at once.
     /// </summary>
+    [Table("Map")]
     public class Map
     {
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

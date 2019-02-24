@@ -3,6 +3,7 @@
     public enum PokemonTradeType
     {
         PokemonTrade,
+        AnyPokemonTrade,
         MoneyTrade,
         GameCornerPrice
     }

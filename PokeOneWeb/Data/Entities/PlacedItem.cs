@@ -2,8 +2,9 @@
 
 namespace PokeOneWeb.Data.Entities
 {
+    /// <inheritdoc />
     /// <summary>
-    /// An <see cref="Entities.Item"/> which is laying around in a <see cref="Location"/> and can be picked up.
+    /// An <see cref="T:PokeOneWeb.Data.Entities.Item" /> which is laying around in a <see cref="T:PokeOneWeb.Data.Entities.Location" /> and can be picked up.
     /// </summary>
     public class PlacedItem : LocationInteraction
     {
