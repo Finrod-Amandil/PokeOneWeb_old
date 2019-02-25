@@ -17,6 +17,8 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
 
     <link href="~/css/styles-layout.css" rel="stylesheet" />
+    
+    <title>Unofficial PokéOne Guide - @ViewData["Title"]</title>
 </head>
 <body>
     <div class="border-black border-header-container-buffer-layer3">
@@ -164,11 +166,7 @@
     <div class="border-black border-content-container-layer1">
     </div>
     <div class="content-container-main">
-        <div class="text-container">
-            <p class="content-text">
-                This is a sample text.
-            </p>
-        </div>
+        @RenderBody()
     </div>
 
     <script type="text/javascript">
@@ -182,7 +180,7 @@
             });
     </script>
 
-    @RenderBody()
+    
 
 </body>
 </html>
