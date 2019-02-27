@@ -1,9 +1,22 @@
 ﻿@model PokeOneWeb.ViewModels.Locations.LocationDetailViewModel
 @{
-    ViewData["Title"] = Model.LocationGroupName;
+	ViewData["Title"] = Model.LocationGroupName;
+}
+@section Head {
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
 }
 <div class="text-container">
-    <p class="content-text">
-        @Model.LocationGroupName
-    </p>
+	<p class="content-text">
+		@Model.LocationGroupName
+	</p>
+	<div id="mapid" style="height: 500px"></div>
+	<script type="text/javascript">
+		var map = L.map('mapid', {
+			crs: L.CRS.Simple
+		});
+		var bounds = [[0, 0], [1000, 1000]];
+		var image = L.imageOverlay('/images/location_maps/route_1_2.png', bounds).addTo(map);
+		map.fitBounds(bounds);
+	</script>
 </div>

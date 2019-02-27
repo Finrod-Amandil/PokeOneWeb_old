@@ -1,24 +1,26 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto" />
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
+	<environment include="Development">
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="~/css/site.css" />
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Comfortaa" />
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto" />
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+			  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+			  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+		<link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+	</environment>
+	<script src="~/lib/jquery/dist/jquery.js"></script>
 
-    <link href="~/css/styles-layout.css" rel="stylesheet" />
-    
-    <title>Unofficial PokéOne Guide - @ViewData["Title"]</title>
+	<link href="~/css/styles-layout.css" rel="stylesheet" />
+
+	@RenderSection("Head", required: false)
+
+	<title>Unofficial PokéOne Guide - @ViewData["Title"]</title>
 </head>
 <body>
     <div class="border-black border-header-container-buffer-layer3">
