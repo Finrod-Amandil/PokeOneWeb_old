@@ -3,20 +3,61 @@
 	ViewData["Title"] = Model.LocationGroupName;
 }
 @section Head {
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
-	<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+	@*<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+		<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>*@
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/ardhi/Leaflet.MousePosition/master/src/L.Control.MousePosition.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js" type="text/javascript"></script>
+	<script src="https://cdn.rawgit.com/ardhi/Leaflet.MousePosition/master/src/L.Control.MousePosition.js" type="text/javascript"></script>
+
 }
 <div class="text-container">
 	<p class="content-text">
 		@Model.LocationGroupName
 	</p>
-	<div id="mapid" style="height: 500px"></div>
+	@*<div id="mapid" style="height: 500px"></div>
+		<script type="text/javascript">
+			var map = L.map('mapid', {
+				crs: L.CRS.Simple
+			});
+			var bounds = [[0, 0], [1000, 1000]];
+			var image = L.imageOverlay('/images/location_maps/route_1_2.png', bounds).addTo(map);
+			map.fitBounds(bounds);
+		</script>*@
+	<div id="map" style="height: 500px"></div>
+	<input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="layer.setOpacity(this.value)">
 	<script type="text/javascript">
-		var map = L.map('mapid', {
-			crs: L.CRS.Simple
+		var mapExtent = [0.00000000, -5959.00000000, 4424.00000000, 0.00000000];
+		var mapMinZoom = 0;
+		var mapMaxZoom = 5;
+		var mapMaxResolution = 1.00000000;
+		var mapMinResolution = Math.pow(2, mapMaxZoom) * mapMaxResolution;;
+		var tileExtent = [0.00000000, -5959.00000000, 4424.00000000, 0.00000000];
+		var crs = L.CRS.Simple;
+		crs.transformation = new L.Transformation(1, -tileExtent[0], -1, tileExtent[3]);
+		crs.scale = function (zoom) {
+			return Math.pow(2, zoom) / mapMinResolution;
+		};
+		crs.zoom = function (scale) {
+			return Math.log(scale * mapMinResolution) / Math.LN2;
+		};
+		var layer;
+		var map = new L.Map('map', {
+			maxZoom: mapMaxZoom,
+			minZoom: mapMinZoom,
+			crs: crs
 		});
-		var bounds = [[0, 0], [1000, 1000]];
-		var image = L.imageOverlay('/images/location_maps/route_1_2.png', bounds).addTo(map);
-		map.fitBounds(bounds);
+
+		layer = L.tileLayer('/images/location_maps/route_1/{z}/{x}/{y}.png', {
+			minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+			attribution: 'Rendered with <a href="https://www.maptiler.com/">MapTiler Desktop</a>',
+			noWrap: true,
+			tms: false
+		}).addTo(map);
+		map.fitBounds([
+			crs.unproject(L.point(mapExtent[2], mapExtent[3])),
+			crs.unproject(L.point(mapExtent[0], mapExtent[1]))
+		]);
+		L.control.mousePosition().addTo(map)
 	</script>
 </div>
