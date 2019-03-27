@@ -29,7 +29,7 @@
 	<script type="text/javascript">
 		var mapExtent = [0.00000000, -5959.00000000, 4424.00000000, 0.00000000];
 		var mapMinZoom = 0;
-		var mapMaxZoom = 5;
+		var mapMaxZoom = 3;
 		var mapMaxResolution = 1.00000000;
 		var mapMinResolution = Math.pow(2, mapMaxZoom) * mapMaxResolution;;
 		var tileExtent = [0.00000000, -5959.00000000, 4424.00000000, 0.00000000];
@@ -48,7 +48,7 @@
 			crs: crs
 		});
 
-		layer = L.tileLayer('/images/location_maps/route_1/{z}/{x}/{y}.png', {
+		layer = L.tileLayer('/images/location_maps/test1/{z}/{x}/{y}.png', {
 			minZoom: mapMinZoom, maxZoom: mapMaxZoom,
 			attribution: 'Rendered with <a href="https://www.maptiler.com/">MapTiler Desktop</a>',
 			noWrap: true,

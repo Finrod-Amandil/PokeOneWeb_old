@@ -1,0 +1,7 @@
+﻿@model PokeOneWeb.ViewModels.Locations.NewLocationViewModel
+
+<form method="post" enctype="multipart/form-data">
+    <input type="text" asp-for="LocationGroupName" placeholder="Name" />
+    <input type="file" asp-for="LocationMap" accept="image/png" />
+    <input id="btn_restaurant" type="submit" value="Speichern" />
+</form>

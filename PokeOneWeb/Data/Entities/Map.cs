@@ -19,6 +19,10 @@ namespace PokeOneWeb.Data.Entities
         /// </summary>
         public string Name { get; set; }
 
+        public int MaxZoomLevel { get; set; }
+        public int ImageWidth { get; set; }
+        public int ImageHeight { get; set; }
+
         /// <summary>
         /// Which <see cref="Location"/>s are placed on this map, with the additional information of their
         /// relative placement.

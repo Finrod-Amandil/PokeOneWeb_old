@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PokeOneWeb.Data;
+using PokeOneWeb.Services.ImageTiler;
+using PokeOneWeb.Services.ImageTiler.Impl;
 
 namespace PokeOneWeb
 {
@@ -36,6 +38,8 @@ namespace PokeOneWeb
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddTransient<IImageTilerService, ImageTilerService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
