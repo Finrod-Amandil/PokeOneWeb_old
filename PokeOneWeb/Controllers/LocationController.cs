@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PokeOneWeb.Data;
 using PokeOneWeb.Data.Entities;
 using PokeOneWeb.Services.ImageTiler;
@@ -21,10 +24,34 @@ namespace PokeOneWeb.Controllers
         [HttpGet("locations/{locationGroupName}")]
         public IActionResult Detail(string locationGroupName)
         {
+            var locationGroup =
+                _context.LocationGroups
+                    .Include(l => l.Maps)
+                    .SingleOrDefault(l =>
+                    l.Name.Equals(locationGroupName, StringComparison.Ordinal));
+
+            if (string.IsNullOrEmpty(locationGroupName) || locationGroup is null)
+            {
+                return BadRequest("Invalid location group name.");
+            }
+
             var viewModel = new LocationDetailViewModel
             {
-                LocationGroupName = locationGroupName
+                LocationGroupName = locationGroup.Name,
+                LocationGroupDisplayName = locationGroup.DisplayName
             };
+
+            if (locationGroup.Maps.Count > 0)
+            {
+                var mapData = locationGroup.Maps.First();
+
+                viewModel.ImageProperties = new ImagePropertiesViewModel
+                {
+                    ImageWidth = mapData.ImageWidth,
+                    ImageHeight = mapData.ImageHeight,
+                    MaxZoomLevel = mapData.MaxZoomLevel
+                };
+            }
 
             return View(viewModel);
         }
@@ -43,6 +70,7 @@ namespace PokeOneWeb.Controllers
             var newLocation = new LocationGroup
             {
                 Name = viewModel.LocationGroupName,
+                DisplayName = viewModel.LocationGroupDisplayName,
                 Maps = new List<Map>
                 {
                     new Map

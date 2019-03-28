@@ -10,7 +10,7 @@ namespace PokeOneWeb.Services.ImageTiler.Impl
     public class ImageTilerService : IImageTilerService
     {
         private readonly IHostingEnvironment _hostingEnvironment;
-        private static readonly int WIDTH_THRESHOLD = 1000;
+        private static readonly int CLIENT_VIEWER_WIDTH = 1000;
         private static readonly int TILE_SIZE = 256;
 
         public ImageTilerService(IHostingEnvironment hostingEnvironment)
@@ -33,26 +33,31 @@ namespace PokeOneWeb.Services.ImageTiler.Impl
 
             //Determine how many zoom levels are required
             var maxZoomLevel = 0;
-            var width = originalImage.Width;
-            while (width > WIDTH_THRESHOLD)
+            var width = CLIENT_VIEWER_WIDTH;
+            while (width < originalImage.Width)
             {
-                width /= 2;
+                width *= 2;
                 maxZoomLevel++;
             }
 
-            for (int zoomLevel = maxZoomLevel; zoomLevel >= 0; zoomLevel--)
+            var aspectRatio = ((double)originalImage.Height) / originalImage.Width;
+            var extendedClientViewerWidth = (int)(TILE_SIZE * Math.Ceiling((double)CLIENT_VIEWER_WIDTH / TILE_SIZE));
+            var extendedClientViewerHeight = (int)(TILE_SIZE * Math.Ceiling((aspectRatio * CLIENT_VIEWER_WIDTH) / TILE_SIZE));
+
+            for (int zoomLevel = 0; zoomLevel <= maxZoomLevel; zoomLevel++)
             {
                 var currentImage = new MagickImage(originalImage);
 
                 //Resize image to correct zoom level
-                var zoomFactor = (int)Math.Pow(2, maxZoomLevel - zoomLevel);
-                var zoomedWidth = originalImage.Width / zoomFactor;
-                var zoomedHeight = originalImage.Height / zoomFactor;
+                var zoomFactor = (int)Math.Pow(2, zoomLevel);
+                var zoomedWidth = CLIENT_VIEWER_WIDTH * zoomFactor;
+
+                var zoomedHeight = (int)(zoomedWidth * aspectRatio);
                 currentImage.Resize(zoomedWidth, zoomedHeight);
 
                 //Extend image to next larger multiple of tile size
-                var extendedWidth = (int)(TILE_SIZE * Math.Ceiling((double) currentImage.Width / TILE_SIZE));
-                var extendedHeight = (int)(TILE_SIZE * Math.Ceiling((double) currentImage.Height / TILE_SIZE));
+                var extendedWidth = extendedClientViewerWidth * zoomFactor;
+                var extendedHeight = extendedClientViewerHeight * zoomFactor;
                 currentImage.Extent(
                     new MagickGeometry(extendedWidth, extendedHeight),
                     Gravity.Northwest,

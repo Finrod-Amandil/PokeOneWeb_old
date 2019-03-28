@@ -1,10 +1,8 @@
 ﻿@model PokeOneWeb.ViewModels.Locations.LocationDetailViewModel
 @{
-	ViewData["Title"] = Model.LocationGroupName;
+	ViewData["Title"] = Model.LocationGroupDisplayName;
 }
 @section Head {
-	@*<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
-		<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>*@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
 	<link rel="stylesheet" href="https://cdn.rawgit.com/ardhi/Leaflet.MousePosition/master/src/L.Control.MousePosition.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js" type="text/javascript"></script>
@@ -12,52 +10,55 @@
 
 }
 <div class="text-container">
-	<p class="content-text">
-		@Model.LocationGroupName
-	</p>
-	@*<div id="mapid" style="height: 500px"></div>
-		<script type="text/javascript">
-			var map = L.map('mapid', {
-				crs: L.CRS.Simple
-			});
-			var bounds = [[0, 0], [1000, 1000]];
-			var image = L.imageOverlay('/images/location_maps/route_1_2.png', bounds).addTo(map);
-			map.fitBounds(bounds);
-		</script>*@
-	<div id="map" style="height: 500px"></div>
-	<input id="slider" type="range" min="0" max="1" step="0.1" value="1" oninput="layer.setOpacity(this.value)">
-	<script type="text/javascript">
-		var mapExtent = [0.00000000, -5959.00000000, 4424.00000000, 0.00000000];
-		var mapMinZoom = 0;
-		var mapMaxZoom = 3;
-		var mapMaxResolution = 1.0000d000;
-		var mapMinResolution = Math.pow(2, mapMaxZoom) * mapMaxResolution;;
-		var tileExtent = [0.00000000, -@Model., 4424.00000000, 0.00000000];
-		var crs = L.CRS.Simple;
-		crs.transformation = new L.Transformation(1, -tileExtent[0], -1, tileExtent[3]);
-		crs.scale = function (zoom) {
-			return Math.pow(2, zoom) / mapMinResolution;
-		};
-		crs.zoom = function (scale) {
-			return Math.log(scale * mapMinResolution) / Math.LN2;
-		};
-		var layer;
-		var map = new L.Map('map', {
-			maxZoom: mapMaxZoom,
-			minZoom: mapMinZoom,
-			crs: crs
-		});
+    <div id="map" style="margin: auto;"></div>
 
-		layer = L.tileLayer('/images/location_maps/@Model.LocationGroupName/{z}/{x}/{y}.png', {
-			minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-			attribution: 'Rendered with <a href="https://www.maptiler.com/">MapTiler Desktop</a>',
-			noWrap: true,
-			tms: false
-		}).addTo(map);
-		map.fitBounds([
-			crs.unproject(L.point(mapExtent[2], mapExtent[3])),
-			crs.unproject(L.point(mapExtent[0], mapExtent[1]))
-		]);
-		L.control.mousePosition().addTo(map)
-	</script>
+    <script type="text/javascript">
+        @{
+            var mapWidth = 1000;
+            var mapHeight = (int)(mapWidth * ((double) Model.ImageProperties.ImageHeight) / Model.ImageProperties.ImageWidth);
+        }
+
+        var mapWidth = @mapWidth;
+        var mapHeight = @mapHeight;
+        var imageWidth = @Model.ImageProperties.ImageWidth;
+        var imageHeight = @Model.ImageProperties.ImageHeight;
+        var mapMinZoom = 0;
+        var mapMaxZoom = @Model.ImageProperties.MaxZoomLevel;
+        var mapMaxResolution = 1.0;
+        var mapMinResolution = Math.pow(2, mapMaxZoom) * mapMaxResolution;
+
+        var mapDiv = document.getElementById("map");
+        mapDiv.style.width = mapWidth + "px";
+        mapDiv.style.height = mapHeight + "px";
+
+        var crs = L.CRS.Simple;
+
+        var transformFactorX = 1 / (imageWidth / (mapWidth * mapMinResolution));
+        var transformFactorY = 1 / (imageHeight / (mapHeight * mapMinResolution));
+        crs.transformation = new L.Transformation(transformFactorX, 0, -transformFactorY, 0);
+
+        crs.scale = function (zoom) {
+            return Math.pow(2, zoom) / mapMinResolution;
+        };
+
+        var mapBounds = new L.LatLngBounds([0, 0], [-imageHeight, imageWidth]);
+
+        var map = new L.Map('map', {
+            crs: crs,
+            maxZoom: mapMaxZoom,
+            minZoom: mapMinZoom,
+            maxBounds: mapBounds,
+            center: [-(imageHeight / 2), imageWidth / 2],
+            zoom: 0
+        });
+
+        var layer = L.tileLayer('/images/location_maps/@Model.LocationGroupName/{z}/{x}/{y}.png', {
+            bounds: mapBounds,
+            noWrap: true,
+            continuousWorld: false,
+            tms: false
+        }).addTo(map);
+
+        L.control.mousePosition().addTo(map);
+    </script>
 </div>

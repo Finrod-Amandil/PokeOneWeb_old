@@ -14,10 +14,15 @@ namespace PokeOneWeb.Data.Entities
         public int Id { get; set; }
 
         /// <summary>
-        /// The display name for the Location Group. This name is used to generate a URL for this Location Group's page and thus needs
+        /// The technical name for the Location Group. This name is used to generate a URL for this Location Group's page and thus needs
         /// to be unique. Uniqueness is enforced by EF Core, see <see cref="ApplicationDbContext"/> for the setup code.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// The name for the Location Group as it can be displayed.
+        /// </summary>
+        public string DisplayName { get; set; }
 
         /// <summary>
         /// Which <see cref="Map"/>s are presented on this LocationGroup's page.
